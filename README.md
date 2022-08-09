@@ -1,4 +1,4 @@
-# file_organizer
+# File Organizer
 Automatically manages files into folders and sub-folders to organize the said directory.
 
 # Installation
