@@ -2,6 +2,7 @@
 # command line arguments
 
 
+from genericpath import isdir
 import getopt, sys
 import os
 
@@ -210,32 +211,34 @@ try:
             for file in files:
 
                 # get file extension and organize it to folders
-                fileExtension = os.path.splitext(file)[1]
-                if fileExtension in document:
+                file_extension = os.path.splitext(file)[1]
+                if file_extension in document:
                     # create folder if it doesn't exist
                     if not os.path.exists(path + "/documents"):
                         os.makedirs(path + "/documents")
                     os.rename(path + "/" + file, path + "/" + "documents/" + file)
-                elif fileExtension in image:
+                elif file_extension in image:
                     if not os.path.exists(path + "/images"):
                         os.makedirs(path + "/images")
                     os.rename(path + "/" + file, path + "/" + "images/" + file)
-                elif fileExtension in video:
+                elif file_extension in video:
                     if not os.path.exists(path + "/videos"):
                         os.makedirs(path + "/videos")
                     os.rename(path + "/" + file, path + "/" + "videos/" + file)
-                elif fileExtension in audio:
+                elif file_extension in audio:
                     if not os.path.exists(path + "/audio"):
                         os.makedirs(path + "/audio")
                     os.rename(path + "/" + file, path + "/" + "audio/" + file)
-                elif fileExtension in executable:
+                elif file_extension in executable:
                     if not os.path.exists(path + "/executables"):
                         os.makedirs(path + "/executables")
                     os.rename(path + "/" + file, path + "/" + "executables/" + file)
-                elif fileExtension in compressed:
+                elif file_extension in compressed:
                     if not os.path.exists(path + "/compressed"):
                         os.makedirs(path + "/compressed")
                     os.rename(path + "/" + file, path + "/" + "compressed/" + file)
+                elif file_extension == "":
+                    pass
                 else:
                     if not os.path.exists(path + "/others"):
                         os.makedirs(path + "/others")
